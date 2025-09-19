@@ -1,4 +1,4 @@
-# Unsupervised Post-Training for Multi-Modal LLM Reasoning via GRPO
+# Unsupervised Post-Training for Multi-Modal LLM Reasoning via GRPO (NeurIPS 2025)
 
 
 
