@@ -1,21 +1,21 @@
-# Unsupervised Post-Training for Multi-Modal LLM Reasoning via GRPO (NeurIPS 2025)
+# First SFT, Second RL, Third UPT: Continual Improving Multi-Modal LLM Reasoning via Unsupervised Post-Training (NeurIPS 2025)
 
 
 
 <div align="center">
-  Lai Wei<sup>1,3</sup>,
+  Lai Wei<sup>1,2</sup>,
   Yuting Li<sup>1</sup>,
-  Chen Wang<sup>3</sup>,
-  Yue Wang<sup>3</sup>,
+  Chen Wang<sup>2</sup>,
+  Yue Wang<sup>2</sup>,
   Linghe Kong<sup>1</sup>, 
-  Weiran Huang<sup>1,2*</sup>
+  Weiran Huang<sup>1,3*</sup>
   Lichao Sun<sup>4</sup>
 </div>
 
   
 <p align="center">
 <i>
-1. School of Computer Science, Shanghai Jiao Tong University &nbsp;<br> 2. Shanghai Innovation Institute &nbsp; 3. Zhongguancun Academy &nbsp; <br>  4. Lehigh University &nbsp;
+1. School of Computer Science, Shanghai Jiao Tong University &nbsp;<br> 2. Zhongguancun Academy &nbsp; 3.Shanghai Innovation Institute  &nbsp; <br>  4. Lehigh University &nbsp;
 </i>
 </p>
 
