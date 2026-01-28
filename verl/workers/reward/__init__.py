@@ -14,6 +14,8 @@
 
 from .config import RewardConfig
 from .function import FunctionRewardManager
+from .unsupervised_reward import UnsupervisedCrossAttentionRewardManager
 
 
-__all__ = ["FunctionRewardManager", "RewardConfig"]
+__all__ = ["FunctionRewardManager", "UnsupervisedCrossAttentionRewardManager", "RewardConfig"]
+

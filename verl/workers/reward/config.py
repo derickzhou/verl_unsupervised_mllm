@@ -27,8 +27,13 @@ class RewardConfig:
     n: int = 10
     score_function_kwargs: dict = field(default_factory=dict)
     skip_special_tokens: bool = True
+    
+    # Unsupervised reward config
+    use_unsupervised_reward: bool = False
+    model_path: Optional[str] = None  # Model path for attention extraction
 
     def post_init(self):
         if self.score_function is not None and os.path.exists(self.score_function):
             self.score_function = os.path.abspath(self.score_function)
+
 

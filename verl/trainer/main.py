@@ -20,7 +20,7 @@ from omegaconf import OmegaConf
 from ..single_controller.ray import RayWorkerGroup
 from ..utils.tokenizer import get_processor, get_tokenizer
 from ..workers.fsdp_workers import FSDPWorker
-from ..workers.reward import FunctionRewardManager
+from ..workers.reward import FunctionRewardManager, UnsupervisedCrossAttentionRewardManager
 from .config import PPOConfig
 from .ray_trainer import RayPPOTrainer, ResourcePoolManager, Role
 
@@ -64,8 +64,20 @@ class Runner:
         }
         resource_pool_manager = ResourcePoolManager(resource_pool_spec=resource_pool_spec, mapping=mapping)
 
-        reward_fn = FunctionRewardManager(config=config.worker.reward, tokenizer=tokenizer)
-        val_reward_fn = FunctionRewardManager(config=config.worker.reward, tokenizer=tokenizer)
+        # Select reward manager based on config
+        if config.worker.reward.use_unsupervised_reward:
+            print("[Main] Using UnsupervisedCrossAttentionRewardManager")
+            # Set model path if not specified
+            if config.worker.reward.model_path is None:
+                config.worker.reward.model_path = config.worker.actor.model.model_path
+            reward_fn = UnsupervisedCrossAttentionRewardManager(
+                config=config.worker.reward, tokenizer=tokenizer
+            )
+            val_reward_fn = FunctionRewardManager(config=config.worker.reward, tokenizer=tokenizer)
+        else:
+            print("[Main] Using FunctionRewardManager")
+            reward_fn = FunctionRewardManager(config=config.worker.reward, tokenizer=tokenizer)
+            val_reward_fn = FunctionRewardManager(config=config.worker.reward, tokenizer=tokenizer)
 
         trainer = RayPPOTrainer(
             config=config,
